@@ -18,7 +18,7 @@ export default function Blueshot() {
   const [holders, setHolders] = useState<Holder[]>([]);
   const [holdingResult, setHoldingResult] = useState<{ holding: boolean; items: number } | null>(null);
   const [lastRun, setLastRun] = useState<string | null>(null);
-  const filtered = useMemo(() => holders.filter(holder => holder.address.toLowerCase().includes(query.toLowerCase())), [holders, query]);
+  const filtered = useMemo(() => holders.filter(holder => holder.address.toLowerCase().includes(query.toLowerCase())).sort((a, b) => b.items - a.items), [holders, query]);
   const totalItems = holders.reduce((total, holder) => total + holder.items, 0);
 
   async function runSnapshot() {
@@ -47,7 +47,7 @@ export default function Blueshot() {
   }
 
   function csv() {
-    const text = "address,items\n" + filtered.map(holder => `${holder.address},${holder.items}`).join("\n") + "\n";
+    const text = "address,items\n" + [...filtered].sort((a, b) => b.items - a.items).map(holder => `${holder.address},${holder.items}`).join("\n") + "\n";
     const link = document.createElement("a");
     link.href = URL.createObjectURL(new Blob([text], { type: "text/csv;charset=utf-8" }));
     link.download = "blueshot-holders.csv";
