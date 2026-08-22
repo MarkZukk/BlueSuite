@@ -2,6 +2,16 @@
   "name": "bluesuite",
   "version": "1.0.0",
   "private": true,
+  "description": "Open-source blockchain operations tooling built by BlueValley Labs and theweb3proxy.",
+  "license": "MIT",
+  "author": "BlueValley Labs and theweb3proxy",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MarkZukk/BlueSuite.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MarkZukk/BlueSuite/issues"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
