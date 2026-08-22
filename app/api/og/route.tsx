@@ -5,7 +5,7 @@ export const runtime = "edge";
 const sections: Record<string, { kicker: string; title: string; detail: string; accent: string }> = {
   home: { kicker: "BLUEVALLEY LABS / BLUESUITE 01", title: "Tools for the blockchain.", detail: "Purpose-built software for people operating on-chain.", accent: "Every workflow, one surface." },
   blueshot: { kicker: "BLUESHOT / SNAPSHOT INFRASTRUCTURE", title: "Snapshot ownership.\nKeep moving.", detail: "Resolve holders, review the result, and export cleanly.", accent: "Fast, read-only chain lookups." },
-  foundersbot: { kicker: "FOUNDERSBOT / PRIVATE DAO TOOLING", title: "A private operating layer.", detail: "The focused workspace for BlueValleyDAO.", accent: "Built for the people doing the work." },
+  foundersbot: { kicker: "FOUNDERSBOT / PRIVATE DAO TOOLING", title: "Your community's\nalpha layer.", detail: "Seven-chain wallet intelligence, readable alerts, and guarded automation for BlueValleyDAO.", accent: "Terminally online. Deliberately controlled." },
   bluehelper: { kicker: "BLUEHELPER / BATCH OPERATIONS", title: "The heavy lifting,\nhandled in batches.", detail: "Move allocations and consolidate on-chain work.", accent: "Coming soon from BlueValley Labs." },
   admin: { kicker: "BLUESUITE / CONTROL CENTER", title: "Operate with\nclarity.", detail: "A calm command surface for blockchain workflows.", accent: "Secure operator access." },
 };
