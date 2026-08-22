@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { ArrowUpRight, Menu, Moon, Sun, X } from "lucide-react";
+import { Menu, Moon, Sun, X } from "lucide-react";
 
 function Brand() {
   return <span className="brand"><span className="brand-mark"><img src="/bluevalleydao.jpg" alt="" /></span><span>Bluesuite</span></span>;
@@ -30,7 +30,7 @@ export function SiteShell({ children }: { children: React.ReactNode }) {
         <Link href="/bluehelper" onClick={closeMenu}>BlueHelper <span className="nav-badge">Soon</span></Link>
         <Link href="/#about" onClick={closeMenu}>About</Link>
       </nav>
-      <div className="top-actions"><button className="icon-button" aria-label="Toggle theme" onClick={() => setDark(!dark)}>{dark ? <Sun size={16} /> : <Moon size={16} />}</button><Link className="admin-link" href="/admin">Admin <ArrowUpRight size={14} /></Link><button className="menu-button" aria-label={menu ? "Close menu" : "Open menu"} onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button></div>
+      <div className="top-actions"><button className="icon-button" aria-label="Toggle theme" onClick={() => setDark(!dark)}>{dark ? <Sun size={16} /> : <Moon size={16} />}</button><button className="menu-button" aria-label={menu ? "Close menu" : "Open menu"} onClick={() => setMenu(!menu)}>{menu ? <X /> : <Menu />}</button></div>
     </header>
     {children}
     <footer className="footer"><div><Brand /><p className="muted">Building tools for the blockchain.</p></div><div className="footer-links"><Link href="https://x.com/bluevalleylabs">BLUEVALLEY LABS ↗</Link><Link href="https://x.com/theweb3proxy">Proxy ↗</Link><span>© 2026 BlueValley Labs</span></div></footer>
