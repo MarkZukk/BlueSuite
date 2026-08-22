@@ -1,0 +1,692 @@
+# Bluesuite — Premium Web3 Product Suite
+
+Build a production-quality website and application shell for **Bluesuite**, a premium blockchain tooling platform created by **BLUEVALLEY LABS**.
+
+**BLUEVALLEY LABS:** https://x.com/bluevalleylabs
+**Founder:** theweb3proxy
+**Motto:** "building tools for the blockchain"
+
+Bluesuite should feel like a serious, highly engineered Web3 software company rather than a generic crypto landing page. The design must be distinctive, polished, fast, minimal, and premium.
+
+Do not produce an AI-looking website. Avoid generic gradients, glowing blobs, excessive glassmorphism, floating 3D objects, robot imagery, AI-generated illustrations, stock imagery, or cliché Web3 visuals.
+
+Use strong typography, sophisticated spacing, subtle borders, excellent hierarchy, restrained motion, premium micro-interactions, and carefully designed UI components.
+
+---
+
+## 1. BRAND DIRECTION
+
+Use the attached BlueValleyDAO image as the primary reference for the brand palette and visual identity.
+
+Extract inspiration from its dominant colors:
+
+* Electric Blue: approximately `#000CFF`
+* Cyan / Aqua: approximately `#93FDF9`
+* Deep Blue: approximately `#030B80`
+* Bright Azure: approximately `#038AE4`
+* Near-black: `#05070D`
+* Soft white: `#F7FAFC`
+
+The site should be **dark-mode first**, with a fully designed light mode.
+
+### Dark mode
+
+Dark mode should be the primary experience.
+
+Use:
+
+* Near-black backgrounds
+* Very deep navy surfaces
+* Electric blue as the primary accent
+* Cyan/aqua as a secondary accent
+* White/off-white typography
+* Subtle blue borders
+* Extremely restrained gradients
+
+Do not make the entire site blue. Blue should function as an accent and brand signal against sophisticated dark surfaces.
+
+### Light mode
+
+Light mode should feel equally intentional rather than simply inverting the dark theme.
+
+Use:
+
+* Warm/off-white backgrounds
+* White cards
+* Deep navy/black typography
+* Electric blue accents
+* Aqua used sparingly
+* Very subtle blue-gray borders
+
+Persist the user's theme selection.
+
+---
+
+## 2. BRAND PERSONALITY
+
+Bluesuite should communicate:
+
+* Technical
+* Exclusive
+* Fast
+* Precise
+* Developer-first
+* Premium
+* Confident
+* Built by people who actually use blockchain infrastructure
+
+Think **premium developer tooling + private Web3 operating system**, not NFT marketplace.
+
+The copy should be concise and confident.
+
+Avoid exaggerated crypto terminology such as:
+
+* "revolutionary"
+* "game-changing"
+* "next generation"
+* "unparalleled"
+* "redefining the future"
+
+Instead, make the quality of the product communicate the confidence.
+
+---
+
+# 3. LANDING PAGE
+
+Create a premium homepage for Bluesuite.
+
+### Hero
+
+Primary headline should establish Bluesuite as a blockchain tooling suite.
+
+Suggested direction:
+
+**Tools for the blockchain.
+Built for operators.**
+
+Supporting copy:
+
+**Bluesuite is a collection of purpose-built tools from BLUEVALLEY LABS for managing, analyzing, and operating on-chain workflows.**
+
+Primary CTA:
+
+**Explore Bluesuite**
+
+Secondary CTA:
+
+**Meet BlueValley Labs**
+
+Include subtle product/UI previews rather than decorative illustrations.
+
+The hero should immediately communicate that Bluesuite contains multiple products.
+
+---
+
+## 4. PRODUCT SUITE
+
+Create a visually impressive product section introducing the applications.
+
+Products:
+
+### Blueshot
+
+NFT snapshot infrastructure.
+
+Use the actual name **Blueshot** prominently.
+
+Description:
+
+**Snapshot NFT ownership across multiple chains with a single, streamlined workflow.**
+
+Supported chains:
+
+* Ethereum
+* Robinhood
+* Base
+* Arbitrum
+
+Show the four chains as clean badges/icons.
+
+Blueshot should feel like a serious infrastructure product, not a simple form.
+
+CTA:
+
+**Open Blueshot**
+
+The actual snapshot functionality should be based on the snapshot implementation/infrastructure from:
+
+https://github.com/MarkZukk/mojihood
+
+Clone/reuse **only the snapshot-related infrastructure**, not the entire Mojihood application.
+
+Do not copy unrelated Mojihood features or branding.
+
+Rebrand everything as Blueshot.
+
+---
+
+# 5. BLUESHOT APPLICATION
+
+Create the complete UI shell for Blueshot.
+
+The application should include:
+
+* Wallet/address input
+* Collection/contract input where appropriate
+* Chain selector
+* Snapshot configuration
+* Snapshot results
+* Holder/address tables
+* NFT counts
+* Filtering
+* Search
+* Export controls
+* Loading states
+* Empty states
+* Error states
+* Transaction/API status indicators
+* Snapshot history UI
+
+Support:
+
+* Ethereum
+* Robinhood
+* Base
+* Arbitrum
+
+### Alchemy configuration
+
+The admin should only need to provide **one Alchemy API key**.
+
+Create a centralized chain configuration layer that maps that single key to the appropriate Alchemy endpoints/network identifiers for:
+
+* Ethereum
+* Base
+* Arbitrum
+* Robinhood
+
+Do not expose the Alchemy key to normal users.
+
+Store secrets securely server-side/environment-side.
+
+Do not hardcode API keys into the frontend.
+
+Create a clean abstraction so additional chains can be added later without rewriting Blueshot.
+
+---
+
+# 6. FOUNDERSBOT
+
+Create a dedicated premium product section/page for **FoundersBot**.
+
+FoundersBot is available exclusively within **BlueValleyDAO**.
+
+The page should market it as a private bot/tool available to members of the DAO.
+
+Present its capabilities in a premium way.
+
+Use strong feature cards and subtle interface previews.
+
+Positioning:
+
+**FoundersBot — the private operating layer for BlueValleyDAO.**
+
+Emphasize:
+
+* Automation
+* Speed
+* Convenience
+* DAO-native workflows
+* Founder/member tooling
+* Operational efficiency
+
+Do not invent technical functionality that has not been provided.
+
+Use marketing language that describes the product without making unsupported claims.
+
+Include testimonials.
+
+Testimonials should look premium and believable, but do not fabricate identifiable real people or quotes. If no real testimonials exist in the repository, create clearly marked placeholder testimonial components that can be replaced from the admin panel.
+
+Clearly state:
+
+**FoundersBot is available exclusively through BlueValleyDAO.**
+
+CTA:
+
+**Contact Proxy**
+
+Link:
+
+https://x.com/theweb3proxy
+
+---
+
+# 7. BLUEHELPER
+
+Create a dedicated product section/page for **BlueHelper**.
+
+BlueHelper is a blockchain operations utility designed for:
+
+* Batch token transfers
+* Batch NFT transfers
+* Batch disperse
+* Batch consolidation
+* Token consolidation
+* NFT consolidation
+* Small airdrops
+
+For now, **do not implement the functionality**.
+
+This is a product teaser.
+
+The page should feel like a product that is coming soon.
+
+Primary message:
+
+**BlueHelper**
+
+**The heavy lifting, handled in batches.**
+
+Add a premium feature overview and product mockups, but every functional interaction should ultimately communicate:
+
+**Coming soon**
+
+Use tasteful "Coming Soon" badges and CTA states.
+
+Do not build fake blockchain functionality.
+
+---
+
+# 8. ABOUT SECTION
+
+Create a sophisticated About section explaining the ecosystem.
+
+There are three primary entities:
+
+## Proxy
+
+Use the relevant Proxy image/assets available in the project folder.
+
+About information:
+
+* Medical doctor
+* Developer
+* Founder of BLUEVALLEY LABS
+* Founder of BlueValleyDAO
+* Creator/founder associated with FoundersBot
+* Creator of Starstruck study app
+
+Do not invent additional biography details.
+
+## BLUEVALLEY LABS
+
+BLUEVALLEY LABS is the company behind Bluesuite.
+
+Description:
+
+**BLUEVALLEY LABS builds practical software for people operating on the blockchain.**
+
+Founded by theweb3proxy.
+
+External link:
+
+https://x.com/bluevalleylabs
+
+## BlueValleyDAO
+
+Use:
+
+**Alpha collective building blockchain tools.**
+
+**Built: Snapshot | TurboMint | CopyMinter**
+
+Official OpenSea:
+
+https://opensea.io/collection/bluevalley-dao-founders-pass/
+
+Present BlueValleyDAO as the ecosystem/community behind the products.
+
+---
+
+# 9. ADMIN PANEL
+
+Build a comprehensive, production-quality admin dashboard for Bluesuite.
+
+The admin panel should feel like an internal SaaS control center.
+
+It should include a sidebar/navigation system and sections for:
+
+### Dashboard
+
+* Overall system status
+* Active products
+* API status
+* Chain status
+* Recent activity
+* Usage metrics
+* Error monitoring
+
+### Blueshot
+
+Admin controls for:
+
+* Alchemy API key
+* Supported chains
+* Chain enable/disable
+* RPC configuration
+* Snapshot settings
+* Rate limits
+* Feature flags
+* Maintenance mode
+* Export settings
+
+The Alchemy configuration must use **one master API key** that is translated internally into the relevant chain/network configuration.
+
+### FoundersBot
+
+Controls for:
+
+* Enable/disable
+* Availability messaging
+* Feature list
+* Testimonials
+* CTA/link
+* Maintenance mode
+
+### BlueHelper
+
+Controls for:
+
+* Product status
+* Coming-soon messaging
+* Feature list
+* Launch state
+* Maintenance mode
+
+### Site / CMS
+
+Allow the admin to control:
+
+* Hero headline
+* Hero description
+* CTA labels
+* Product descriptions
+* Product visibility
+* About content
+* Social links
+* OpenSea link
+* Testimonials
+* Navigation
+* Footer
+* Announcement/banner
+* Theme settings
+
+### Analytics / Activity
+
+Provide UI for:
+
+* Usage
+* Snapshot count
+* Product activity
+* Recent events
+* Errors
+* API requests
+
+If backend analytics are not available yet, build the UI with realistic placeholder data and clearly separate mock data from production data.
+
+---
+
+# 10. DESIGN SYSTEM
+
+Create a reusable Bluesuite design system.
+
+Define:
+
+* Typography scale
+* Color tokens
+* Spacing system
+* Border radius system
+* Shadows
+* Buttons
+* Inputs
+* Cards
+* Tables
+* Badges
+* Modals
+* Dropdowns
+* Tabs
+* Navigation
+* Toasts
+* Skeleton loaders
+* Empty states
+* Error states
+
+Use CSS variables/design tokens so dark and light themes can be changed centrally.
+
+---
+
+# 11. TYPOGRAPHY
+
+Do not use default system typography everywhere.
+
+Use a distinctive premium font combination.
+
+The typography should feel similar to high-end developer infrastructure products.
+
+Use:
+
+* A strong display font for major headings
+* A highly legible modern sans-serif for body/UI
+* A monospace font for blockchain addresses, hashes, technical data, and code-like elements
+
+Do not overuse the display font.
+
+Typography should be one of the strongest parts of the identity.
+
+---
+
+# 12. MOTION
+
+Use motion deliberately.
+
+Include:
+
+* Smooth page transitions
+* Subtle card hover states
+* Button interactions
+* Navigation transitions
+* Scroll reveal
+* Theme transition
+* Subtle product preview animations
+
+Do NOT use:
+
+* Constant floating elements
+* Excessive parallax
+* Rainbow gradients
+* Shaking/glitch effects
+* Overly flashy Web3 animations
+
+Motion should make the interface feel expensive, not busy.
+
+Respect `prefers-reduced-motion`.
+
+---
+
+# 13. RESPONSIVENESS
+
+The entire product must be responsive.
+
+Optimize for:
+
+* Desktop
+* Laptop
+* Tablet
+* Mobile
+
+Do not simply shrink the desktop layout.
+
+Navigation, cards, tables, dashboards, and product previews should have intentional mobile layouts.
+
+---
+
+# 14. ACCESSIBILITY
+
+Implement:
+
+* Semantic HTML
+* Keyboard navigation
+* Visible focus states
+* Accessible buttons
+* Proper form labels
+* Sufficient contrast
+* ARIA labels where appropriate
+* Reduced-motion support
+
+---
+
+# 15. ENGINEERING REQUIREMENTS
+
+Before writing code:
+
+1. Inspect the entire repository.
+2. Inspect the available project assets and images.
+3. Inspect any existing frontend/backend architecture.
+4. Inspect the Mojihood repository/infrastructure relevant to the snapshot functionality.
+5. Identify the existing framework, package manager, routing system, styling system, and data layer.
+6. Reuse existing infrastructure where appropriate rather than unnecessarily replacing it.
+7. Keep Blueshot's snapshot implementation isolated from unrelated Mojihood functionality.
+
+Do not blindly create a new stack if the repository already has an appropriate one.
+
+Keep architecture modular.
+
+Recommended conceptual structure:
+
+* `/bluesuite`
+* `/blueshot`
+* `/foundersbot`
+* `/bluehelper`
+* `/admin`
+
+Use reusable components rather than duplicating UI.
+
+---
+
+# 16. SECURITY
+
+Treat all API credentials as secrets.
+
+Never expose:
+
+* Alchemy API keys
+* Private keys
+* Admin credentials
+* Server secrets
+
+in client-side source code.
+
+Use environment variables/server-side configuration where appropriate.
+
+Do not create fake authentication that pretends to be secure.
+
+If authentication infrastructure is not available, create a clean admin authentication boundary that can be connected to real auth later.
+
+---
+
+# 17. CONTENT / BRAND RULES
+
+Use the exact brand spelling:
+
+**Bluesuite**
+**Blueshot**
+**FoundersBot**
+**BlueHelper**
+**BLUEVALLEY LABS**
+**BlueValleyDAO**
+
+Do not use "Blue Suite".
+
+Do not introduce unrelated brands.
+
+Do not make Bluesuite look like an NFT marketplace.
+
+Do not use generic AI-generated imagery.
+
+Do not use stock illustrations.
+
+Use the supplied project assets wherever relevant.
+
+The attached BlueValleyDAO logo should inform the visual identity, but do not simply place the logo everywhere.
+
+---
+
+# 18. PREMIUM VISUAL DIRECTION
+
+The final result should feel like a combination of:
+
+* Premium developer infrastructure
+* Private Web3 operating system
+* High-end SaaS dashboard
+* Institutional-grade tooling
+
+The interface should have excellent whitespace and visual hierarchy.
+
+Use dark surfaces, subtle borders, strong typography, electric blue accents, and small amounts of aqua.
+
+Avoid visual clutter.
+
+Every section should have a reason to exist.
+
+---
+
+# 19. QUALITY BAR
+
+Do not stop at a basic landing page.
+
+The final result should feel like a real product that could be shown publicly.
+
+Prioritize:
+
+1. Visual polish
+2. Brand consistency
+3. UX quality
+4. Responsive design
+5. Component quality
+6. Architecture
+7. Accessibility
+8. Performance
+9. Maintainability
+
+Before finishing, test the application thoroughly.
+
+Check:
+
+* No broken routes
+* No broken images
+* No console errors
+* No obvious TypeScript errors
+* No dead buttons that appear functional
+* Correct light/dark theme
+* Mobile layout
+* Desktop layout
+* Navigation
+* Admin navigation
+* Blueshot configuration flow
+* Empty/loading/error states
+
+Where functionality is intentionally not implemented, make that explicit in the UI rather than pretending it works.
+
+---
+
+# 20. FINAL OBJECTIVE
+
+The finished Bluesuite should feel like a **real premium blockchain tooling company**, not a template.
+
+The first impression should be:
+
+**"These people build serious infrastructure."**
+
+Build the interface with enough depth that Bluesuite can grow into a complete ecosystem of blockchain tools without requiring a redesign later.
+
