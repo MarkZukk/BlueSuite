@@ -1,0 +1,104 @@
+<svg width="1500" height="800" viewBox="0 0 1500 800" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="52" y1="24" x2="1450" y2="800" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#111B45"/>
+      <stop offset="0.48" stop-color="#0B1027"/>
+      <stop offset="1" stop-color="#05080F"/>
+    </linearGradient>
+    <linearGradient id="edge" x1="90" y1="96" x2="1380" y2="720" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6475FF"/>
+      <stop offset="1" stop-color="#70ECE0"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="970" y1="164" x2="1318" y2="612" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#6676FF"/>
+      <stop offset="1" stop-color="#70ECE0"/>
+    </linearGradient>
+    <linearGradient id="bar" x1="1012" y1="0" x2="1288" y2="0" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#5366FF"/>
+      <stop offset="1" stop-color="#78E9DF"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(1220 100) rotate(135) scale(520)">
+      <stop stop-color="#5366FF" stop-opacity=".52"/>
+      <stop offset="1" stop-color="#5366FF" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="flash" cx="0" cy="0" r="1" gradientTransform="translate(1140 355) rotate(90) scale(310)">
+      <stop stop-color="#70ECE0" stop-opacity=".16"/>
+      <stop offset="1" stop-color="#70ECE0" stop-opacity="0"/>
+    </radialGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M40 0H0V40" stroke="#A6B0FF" stroke-opacity=".075"/>
+    </pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="170%">
+      <feDropShadow dx="0" dy="26" stdDeviation="25" flood-color="#000000" flood-opacity=".42"/>
+    </filter>
+    <filter id="soft" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="18"/>
+    </filter>
+  </defs>
+
+  <rect width="1500" height="800" fill="#05080F"/>
+  <rect x="18" y="18" width="1464" height="764" rx="44" fill="url(#bg)" stroke="url(#edge)" stroke-opacity=".52" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="42" y="42" width="1416" height="716" rx="32" fill="url(#grid)"/>
+  <rect x="18" y="18" width="1464" height="764" rx="44" fill="url(#glow)"/>
+
+  <circle cx="1215" cy="116" r="230" stroke="#70ECE0" stroke-opacity=".12" stroke-width="2"/>
+  <circle cx="1215" cy="116" r="166" stroke="#70ECE0" stroke-opacity=".11"/>
+  <circle cx="1215" cy="116" r="98" stroke="#70ECE0" stroke-opacity=".12"/>
+  <circle cx="1215" cy="116" r="7" fill="#70ECE0"/>
+  <circle cx="1138" cy="355" r="250" fill="url(#flash)" filter="url(#soft)"/>
+
+  <g transform="translate(86 82)">
+    <rect width="348" height="38" rx="19" fill="#15204A" stroke="#6273FF" stroke-opacity=".62"/>
+    <circle cx="21" cy="19" r="5" fill="#70ECE0"/>
+    <text x="38" y="24" fill="#B8C3FF" font-family="Arial, sans-serif" font-size="13" font-weight="700" letter-spacing="2.4">BLUEVALLEY LABS / BLUESUITE</text>
+  </g>
+
+  <text x="86" y="236" fill="#F4F7FF" font-family="Arial, sans-serif" font-size="92" font-weight="700" letter-spacing="-4">Blueshot</text>
+  <text x="90" y="310" fill="#8593FF" font-family="Arial, sans-serif" font-size="52" font-weight="700" letter-spacing="-2">Snapshot ownership.</text>
+  <text x="90" y="356" fill="#AFC0D4" font-family="Arial, sans-serif" font-size="23">Fast, read-only NFT holder snapshots across four chains.</text>
+
+  <g transform="translate(90 414)">
+    <rect width="170" height="42" rx="11" fill="#121C40" stroke="#5B6DFF" stroke-opacity=".72"/>
+    <text x="20" y="27" fill="#C2C9FF" font-family="monospace" font-size="13" letter-spacing="1.4">INDEXED API</text>
+    <rect x="182" width="166" height="42" rx="11" fill="#121C40" stroke="#5B6DFF" stroke-opacity=".72"/>
+    <text x="202" y="27" fill="#C2C9FF" font-family="monospace" font-size="13" letter-spacing="1.2">RPC FALLBACK</text>
+    <rect x="360" width="164" height="42" rx="11" fill="#121C40" stroke="#5B6DFF" stroke-opacity=".72"/>
+    <text x="380" y="27" fill="#C2C9FF" font-family="monospace" font-size="13" letter-spacing="1.3">CSV EXPORT</text>
+  </g>
+
+  <g transform="translate(90 524)">
+    <circle cx="9" cy="9" r="8" fill="#70ECE0" fill-opacity=".16" stroke="#70ECE0"/>
+    <path d="M5 9.5L8 12.5L14 5.8" stroke="#70ECE0" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="28" y="14" fill="#91A3BA" font-family="monospace" font-size="13" letter-spacing="1.5">NO WALLET CONNECTION / NO SIGNATURES</text>
+    <circle cx="9" cy="51" r="8" fill="#6475FF" fill-opacity=".16" stroke="#6475FF"/>
+    <path d="M5 51.5L8 54.5L14 47.8" stroke="#8B99FF" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+    <text x="28" y="56" fill="#91A3BA" font-family="monospace" font-size="13" letter-spacing="1.5">TOP HOLDER TO LEAST HOLDER</text>
+  </g>
+
+  <g transform="translate(820 178)">
+    <rect width="552" height="468" rx="28" fill="#0A1022" stroke="#5D70FF" stroke-opacity=".64" stroke-width="2" filter="url(#shadow)"/>
+    <rect x="22" y="22" width="508" height="424" rx="19" fill="#0B1228" stroke="#263654"/>
+    <circle cx="51" cy="57" r="5" fill="#70ECE0"/>
+    <text x="68" y="62" fill="#70ECE0" font-family="monospace" font-size="13" letter-spacing="2">BLUESHOT / OWNER INDEX</text>
+    <text x="485" y="62" text-anchor="end" fill="#8291A9" font-family="monospace" font-size="11" letter-spacing="1.2">UI PREVIEW</text>
+    <path d="M47 88H505" stroke="#263654"/>
+    <text x="48" y="121" fill="#71819B" font-family="monospace" font-size="11" letter-spacing="1.7">COLLECTION CONTRACT ADDRESS</text>
+    <rect x="48" y="137" width="322" height="46" rx="10" fill="#111A34" stroke="#4257CE"/>
+    <text x="67" y="166" fill="#E9EEFF" font-family="monospace" font-size="14">0x7a2...c91b</text>
+    <rect x="382" y="137" width="123" height="46" rx="10" fill="#5268FF"/>
+    <text x="443.5" y="166" text-anchor="middle" fill="#FFFFFF" font-family="Arial, sans-serif" font-size="14" font-weight="700">ROBINHOOD</text>
+    <text x="48" y="220" fill="#71819B" font-family="monospace" font-size="11" letter-spacing="1.7">HOLDER DISTRIBUTION</text>
+    <path d="M50 390H500M50 390V247" stroke="#2A3856"/>
+    <path d="M70 365C132 348 153 316 199 326C250 337 273 276 317 293C363 310 397 251 476 268" stroke="url(#bar)" stroke-width="5" stroke-linecap="round"/>
+    <path d="M70 365C132 348 153 316 199 326C250 337 273 276 317 293C363 310 397 251 476 268V390H70Z" fill="url(#bar)" fill-opacity=".11"/>
+    <circle cx="476" cy="268" r="7" fill="#70ECE0"/>
+    <text x="50" y="421" fill="#70ECE0" font-family="monospace" font-size="12" letter-spacing="1.4">SORTED TOP -&gt; LEAST</text>
+    <text x="500" y="421" text-anchor="end" fill="#8291A9" font-family="monospace" font-size="11">READ ONLY</text>
+  </g>
+
+  <g transform="translate(90 694)">
+    <text x="0" y="0" fill="#70ECE0" font-family="monospace" font-size="12" letter-spacing="1.6">OPEN SOURCE / MIT LICENSE</text>
+    <text x="0" y="27" fill="#8291A9" font-family="monospace" font-size="11" letter-spacing="1.2">github.com/MarkZukk/BlueSuite</text>
+  </g>
+  <text x="1416" y="724" text-anchor="end" fill="#73839C" font-family="monospace" font-size="12" letter-spacing="1.5">BLUEVALLEY LABS + THEWEB3PROXY / 01</text>
+</svg>

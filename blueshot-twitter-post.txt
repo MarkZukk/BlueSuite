@@ -1,0 +1,53 @@
+BLUESHOT - TWITTER THREAD COPY
+
+Written in first person for Proxy
+
+1/8
+I'm Proxy, founder of BlueValley Labs and theweb3proxy. I'm building Bluesuite as an open-source suite of focused tools for people who operate on-chain.
+
+Blueshot is the snapshot layer: a fast, read-only way to understand NFT ownership without manual data hunting.
+
+2/8
+Blueshot's workflow:
+
+1) paste a collection contract address
+2) choose Ethereum, Base, Arbitrum, or Robinhood Chain
+3) run a holder snapshot
+4) review balances
+5) export a clean CSV
+
+No wallet connection, transaction, or signature request.
+
+3/8
+With ALCHEMY_API_KEY configured, Blueshot uses Alchemy's indexed NFT API on supported networks. Operators get a direct path to ownership data without building an index from scratch.
+
+The secret stays server-side and is never exposed to the browser.
+
+4/8
+Robinhood Chain has a resilient path: parallel RPC and Multicall3 requests for sequential ERC-721 collections, then Blockscout holder paging when token IDs are not sequential.
+
+The goal is reliable output, not a fragile single-provider demo.
+
+5/8
+Need one wallet check? Select "check if an address is holding a collection," enter an address, and get a direct holding result with the item count.
+
+Useful for allowlists, community checks, claim preparation, and quick verification.
+
+6/8
+CSV exports are sorted from largest holder balance to smallest. Every address is validated before a provider is called, and the API returns structured data for review, audits, or downstream workflows.
+
+Small details matter when output becomes an operational input.
+
+7/8
+Blueshot is one part of Bluesuite, alongside FoundersBot and BlueHelper: practical tools for wallet intelligence, NFT snapshots, and repeatable batch operations.
+
+I keep the foundation small so contributors can understand it, improve it, and build on it.
+
+8/8
+Bluesuite is open source, built by BlueValley Labs and theweb3proxy under the MIT License.
+
+Contribute code, docs, tests, provider adapters, or accessibility fixes:
+
+https://github.com/MarkZukk/BlueSuite
+
+Contributors welcome. #Blueshot #Bluesuite #OpenSource
