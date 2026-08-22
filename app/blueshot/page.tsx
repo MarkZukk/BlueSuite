@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { ArrowDownToLine, CheckCircle2, CircleAlert, Download, Filter, Loader2, Search, Sparkles } from "lucide-react";
 import { chains } from "@/lib/chains";
 
@@ -26,6 +26,8 @@ export default function Blueshot() {
   const [lastRun, setLastRun] = useState<string | null>(null);
   const [caPlaceholder, setCaPlaceholder] = useState("");
   const [rpcConfigured, setRpcConfigured] = useState<boolean | null>(null);
+  const [flashActive, setFlashActive] = useState(false);
+  const flashTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
   const filtered = useMemo(() => holders.filter(holder => holder.address.toLowerCase().includes(query.toLowerCase())).sort((a, b) => b.items - a.items), [holders, query]);
   const totalItems = holders.reduce((total, holder) => total + holder.items, 0);
 
@@ -65,7 +67,21 @@ export default function Blueshot() {
     return () => { active = false; };
   }, []);
 
+  useEffect(() => () => {
+    if (flashTimer.current) clearTimeout(flashTimer.current);
+  }, []);
+
+  function triggerCameraFlash() {
+    if (flashTimer.current) clearTimeout(flashTimer.current);
+    setFlashActive(true);
+    flashTimer.current = setTimeout(() => {
+      setFlashActive(false);
+      flashTimer.current = null;
+    }, 620);
+  }
+
   async function runSnapshot() {
+    triggerCameraFlash();
     setStatus("loading");
     setError("");
     setHoldingResult(null);
@@ -100,6 +116,7 @@ export default function Blueshot() {
   }
 
   return <main className="page app-page blueshot-page">
+    <div className={`camera-flash ${flashActive ? "is-active" : ""}`} aria-hidden="true"><span className="camera-flash-ring camera-flash-ring-one" /><span className="camera-flash-ring camera-flash-ring-two" /></div>
     <div className="app-header blueshot-header"><div><div className="eyebrow">BLUESHOT / SNAPSHOT INFRASTRUCTURE</div><h1 style={{ fontSize: "clamp(46px,6vw,76px)" }}>Snapshot ownership.<br /><span style={{ color: "var(--blue-2)" }}>Keep moving.</span></h1></div><div className="blueshot-header-note"><span className={`rpc-status-pill ${rpcConfigured === null ? "is-checking" : rpcConfigured ? "is-ready" : "is-off"}`} title={rpcConfigured === null ? "Checking RPC configuration" : rpcConfigured ? "Alchemy RPC configured" : "No Alchemy key configured"}><i className="rpc-status-dot" /> RPC STATUS</span><p>Resolve holders across supported chains, review the result, and export a clean operator-ready file.</p></div></div>
     <div className="app-layout blueshot-layout">
       <section className="main-card blueshot-card"><div className="blueshot-card-top"><div><div className="eyebrow">NEW SNAPSHOT</div><h2 style={{ fontSize: 32, marginTop: 8 }}>Configure your capture</h2><p className="blueshot-subtitle">Drop a collection address, choose the network, and let Blueshot resolve the holders.</p></div><div className="capture-mark"><span>BS</span><small>01</small></div></div>
