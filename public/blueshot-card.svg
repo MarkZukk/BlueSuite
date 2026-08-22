@@ -1,0 +1,24 @@
+<svg width="1200" height="820" viewBox="0 0 1200 820" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="30" y1="20" x2="1150" y2="800" gradientUnits="userSpaceOnUse"><stop stop-color="#111B45"/><stop offset=".55" stop-color="#101329"/><stop offset="1" stop-color="#071015"/></linearGradient>
+    <linearGradient id="line" x1="120" y1="80" x2="1060" y2="740" gradientUnits="userSpaceOnUse"><stop stop-color="#6475FF"/><stop offset="1" stop-color="#70ECE0"/></linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientTransform="translate(945 96) rotate(135) scale(470)"><stop stop-color="#5668FF" stop-opacity=".56"/><stop offset="1" stop-color="#5668FF" stop-opacity="0"/></radialGradient>
+    <pattern id="grid" width="42" height="42" patternUnits="userSpaceOnUse"><path d="M42 0H0V42" stroke="#9DA8FF" stroke-opacity=".07"/></pattern>
+    <filter id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="24" stdDeviation="24" flood-color="#000" flood-opacity=".38"/></filter>
+  </defs>
+  <rect x="12" y="12" width="1176" height="796" rx="42" fill="url(#bg)" stroke="#6B7BFF" stroke-opacity=".4" stroke-width="2" filter="url(#shadow)"/>
+  <rect x="12" y="12" width="1176" height="796" rx="42" fill="url(#glow)"/>
+  <rect x="36" y="36" width="1128" height="748" rx="30" fill="url(#grid)"/>
+  <circle cx="1010" cy="118" r="172" stroke="#73ECE2" stroke-opacity=".18" stroke-width="2"/><circle cx="1010" cy="118" r="112" stroke="#73ECE2" stroke-opacity=".14"/><circle cx="1010" cy="118" r="8" fill="#73ECE2"/>
+  <text x="76" y="86" fill="#73ECE2" font-family="Arial, sans-serif" font-size="18" font-weight="700" letter-spacing="4">BLUESHOT / SNAPSHOT INFRASTRUCTURE</text>
+  <text x="76" y="176" fill="#F4F7FF" font-family="Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="-3">Ownership,</text>
+  <text x="76" y="252" fill="#8B99FF" font-family="Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="-3">resolved.</text>
+  <text x="80" y="302" fill="#AAB6CB" font-family="Arial, sans-serif" font-size="22">Fast, read-only holder snapshots across supported chains.</text>
+  <rect x="76" y="364" width="484" height="132" rx="18" fill="#0B1023" stroke="#5466FF" stroke-opacity=".55"/>
+  <text x="102" y="399" fill="#7583A1" font-family="monospace" font-size="14" letter-spacing="2">LATEST CAPTURE</text>
+  <text x="102" y="445" fill="#F4F7FF" font-family="Arial, sans-serif" font-size="30" font-weight="700">bluevalley-dao-pass</text>
+  <text x="102" y="475" fill="#73ECE2" font-family="monospace" font-size="14">1,284 HOLDERS   ·   4,912 ITEMS</text>
+  <g transform="translate(666 358)"><rect width="438" height="280" rx="22" fill="#0B1023" stroke="#273554"/><text x="28" y="43" fill="#7583A1" font-family="monospace" font-size="13" letter-spacing="2">HOLDER DISTRIBUTION</text><path d="M30 232H404M30 232V76" stroke="#2A3856"/><path d="M50 202C112 190 120 176 171 181C220 187 246 117 290 133C334 150 349 86 404 93" stroke="url(#line)" stroke-width="5" stroke-linecap="round"/><path d="M50 202C112 190 120 176 171 181C220 187 246 117 290 133C334 150 349 86 404 93V232H50Z" fill="url(#line)" fill-opacity=".12"/><circle cx="404" cy="93" r="7" fill="#73ECE2"/><text x="30" y="262" fill="#73ECE2" font-family="monospace" font-size="13">TOP HOLDERS → LEAST</text></g>
+  <g transform="translate(76 694)"><rect width="106" height="38" rx="10" fill="#151F42" stroke="#465AFF"/><text x="22" y="24" fill="#B9C2FF" font-family="monospace" font-size="13">ETH</text><rect x="118" width="106" height="38" rx="10" fill="#151F42" stroke="#465AFF"/><text x="140" y="24" fill="#B9C2FF" font-family="monospace" font-size="13">BASE</text><rect x="236" width="142" height="38" rx="10" fill="#151F42" stroke="#465AFF"/><text x="258" y="24" fill="#B9C2FF" font-family="monospace" font-size="13">ROBINHOOD</text></g>
+  <text x="1050" y="741" fill="#7583A1" font-family="monospace" font-size="13" text-anchor="end">BLUEVALLEY LABS / 01</text>
+</svg>
