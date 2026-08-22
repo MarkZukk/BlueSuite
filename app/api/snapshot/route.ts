@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { alchemyNftUrl, chains, isAddress, type ChainId } from "@/lib/chains";
+import { getAlchemyApiKey } from "@/lib/runtime-config";
 
 export const runtime = "nodejs";
 export const maxDuration = 60;
@@ -36,7 +37,7 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Enter a valid wallet address to check." }, { status: 400 });
     }
 
-    const key = process.env.ALCHEMY_API_KEY;
+    const key = getAlchemyApiKey();
     if (key) {
       try {
         // Alchemy's indexed owner endpoint is the fastest path when the

@@ -25,6 +25,7 @@ export default function Blueshot() {
   const [holdingResult, setHoldingResult] = useState<{ holding: boolean; items: number } | null>(null);
   const [lastRun, setLastRun] = useState<string | null>(null);
   const [caPlaceholder, setCaPlaceholder] = useState("");
+  const [rpcConfigured, setRpcConfigured] = useState<boolean | null>(null);
   const filtered = useMemo(() => holders.filter(holder => holder.address.toLowerCase().includes(query.toLowerCase())).sort((a, b) => b.items - a.items), [holders, query]);
   const totalItems = holders.reduce((total, holder) => total + holder.items, 0);
 
@@ -53,6 +54,15 @@ export default function Blueshot() {
     };
     tick();
     return () => clearTimeout(timer);
+  }, []);
+
+  useEffect(() => {
+    let active = true;
+    fetch("/api/rpc-status", { cache: "no-store" })
+      .then(response => response.ok ? response.json() as Promise<{ configured?: boolean }> : null)
+      .then(data => { if (active) setRpcConfigured(Boolean(data?.configured)); })
+      .catch(() => { if (active) setRpcConfigured(false); });
+    return () => { active = false; };
   }, []);
 
   async function runSnapshot() {
@@ -90,9 +100,8 @@ export default function Blueshot() {
   }
 
   return <main className="page app-page blueshot-page">
-    <div className="app-header blueshot-header"><div><div className="eyebrow">BLUESHOT / SNAPSHOT INFRASTRUCTURE</div><h1 style={{ fontSize: "clamp(46px,6vw,76px)" }}>Snapshot ownership.<br /><span style={{ color: "var(--blue-2)" }}>Keep moving.</span></h1></div><div className="blueshot-header-note"><span className="live-pill"><i className="status-dot" /> PROVIDER READY</span><p>Resolve holders across supported chains, review the result, and export a clean operator-ready file.</p></div></div>
-    <div className="app-layout">
-      <aside className="side-card blueshot-sidebar"><div className="side-title">Workspace</div><div className="side-nav"><button className="active">New snapshot <span>01</span></button><button>Snapshot history <span>—</span></button><button>Saved collections <span>—</span></button></div><div className="side-title" style={{ marginTop: 22 }}>System</div><div className="side-nav"><button>API status <span className="status-dot" style={{ display: "inline-block", marginLeft: 5 }} /></button><button>Export settings <span>CSV</span></button></div><div className="notice" style={{ marginTop: 20, fontSize: 11 }}>Alchemy is used first for indexed snapshots when configured. Robinhood falls back to parallel RPC and explorer paging automatically.</div><div className="sidebar-foot"><span className="status-dot" /> READ-ONLY WORKFLOW</div></aside>
+    <div className="app-header blueshot-header"><div><div className="eyebrow">BLUESHOT / SNAPSHOT INFRASTRUCTURE</div><h1 style={{ fontSize: "clamp(46px,6vw,76px)" }}>Snapshot ownership.<br /><span style={{ color: "var(--blue-2)" }}>Keep moving.</span></h1></div><div className="blueshot-header-note"><span className={`rpc-status-pill ${rpcConfigured === null ? "is-checking" : rpcConfigured ? "is-ready" : "is-off"}`} title={rpcConfigured === null ? "Checking RPC configuration" : rpcConfigured ? "Alchemy RPC configured" : "No Alchemy key configured"}><i className="rpc-status-dot" /> RPC STATUS</span><p>Resolve holders across supported chains, review the result, and export a clean operator-ready file.</p></div></div>
+    <div className="app-layout blueshot-layout">
       <section className="main-card blueshot-card"><div className="blueshot-card-top"><div><div className="eyebrow">NEW SNAPSHOT</div><h2 style={{ fontSize: 32, marginTop: 8 }}>Configure your capture</h2><p className="blueshot-subtitle">Drop a collection address, choose the network, and let Blueshot resolve the holders.</p></div><div className="capture-mark"><span>BS</span><small>01</small></div></div>
         <div className="snapshot-form-grid" style={{ marginTop: 28 }}>
           <div className="field collection-field"><label htmlFor="collection"><span>Collection contract address</span><em>Required</em></label><div className="input-shell"><span className="input-prefix">CA</span><input id="collection" value={collection} onChange={event => setCollection(event.target.value)} placeholder={caPlaceholder} autoComplete="off" spellCheck={false} /></div><small className="field-note">Any ERC-721 or ERC-1155 collection contract.</small></div>
