@@ -66,6 +66,7 @@ Then fill in the values below. Server-only secrets must never use a `NEXT_PUBLIC
 | Variable | Required | Purpose |
 | --- | --- | --- |
 | `ALCHEMY_API_KEY` | For non-Robinhood snapshots | Alchemy NFT API key. Robinhood also tries it first when configured. |
+| `OPENSEA_API_KEY` | Optional | OpenSea API key used for collection name and high-resolution artwork previews before a snapshot. |
 | `ADMIN_PASSWORD` | For `/admin` | Password used to sign in to the control center. |
 | `ADMIN_SESSION_SECRET` | For `/admin` | Separate long random secret used to sign session cookies. |
 | `NEXT_PUBLIC_SITE_URL` | Recommended in production | Canonical URL used for metadata and social cards. |

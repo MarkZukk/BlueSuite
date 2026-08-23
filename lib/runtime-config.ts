@@ -1,4 +1,4 @@
-type RuntimeConfig = { alchemyKey: string | null };
+type RuntimeConfig = { alchemyKey: string | null; openseaKey: string | null };
 
 // Route handlers can be bundled independently by Next.js. Keeping the
 // override on globalThis and process.env lets an admin save apply to the
@@ -14,13 +14,34 @@ export function getAlchemyApiKey() {
   return runtimeConfig.__bluesuiteRuntimeConfig?.alchemyKey ?? process.env.ALCHEMY_API_KEY ?? "";
 }
 
+export function getOpenSeaApiKey() {
+  return runtimeConfig.__bluesuiteRuntimeConfig?.openseaKey ?? process.env.OPENSEA_API_KEY ?? "";
+}
+
 export function setAlchemyApiKey(value: string) {
   const trimmed = value.trim();
-  runtimeConfig.__bluesuiteRuntimeConfig = { alchemyKey: trimmed || null };
+  runtimeConfig.__bluesuiteRuntimeConfig = {
+    alchemyKey: trimmed || null,
+    openseaKey: runtimeConfig.__bluesuiteRuntimeConfig?.openseaKey ?? null,
+  };
   if (trimmed) process.env.ALCHEMY_API_KEY = trimmed;
   return Boolean(getAlchemyApiKey());
 }
 
 export function hasAlchemyApiKey() {
   return Boolean(getAlchemyApiKey());
+}
+
+export function setOpenSeaApiKey(value: string) {
+  const trimmed = value.trim();
+  runtimeConfig.__bluesuiteRuntimeConfig = {
+    alchemyKey: runtimeConfig.__bluesuiteRuntimeConfig?.alchemyKey ?? null,
+    openseaKey: trimmed || null,
+  };
+  if (trimmed) process.env.OPENSEA_API_KEY = trimmed;
+  return Boolean(getOpenSeaApiKey());
+}
+
+export function hasOpenSeaApiKey() {
+  return Boolean(getOpenSeaApiKey());
 }

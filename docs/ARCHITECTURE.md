@@ -45,3 +45,7 @@ The login route compares the submitted password using a timing-safe comparison. 
 - The admin product toggles and CMS controls are presentation scaffolding; they do not yet persist content or settings.
 - Admin auth is a single shared password, not a complete identity provider or role system.
 - Alchemy network availability can vary by account and chain; the Robinhood fallback is intentionally retained.
+
+## Collection previews
+
+Before a snapshot begins, Blueshot calls `GET /api/collection-metadata` to load an optional OpenSea collection name, description, slug, and high-resolution image. `OPENSEA_API_KEY` is read only on the Node.js server route. If the key is not configured or OpenSea cannot index the selected chain, the operator can still proceed with the snapshot using the existing provider strategy.
