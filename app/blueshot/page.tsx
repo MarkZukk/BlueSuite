@@ -8,6 +8,7 @@ type Holder = { address: string; items: number };
 type Status = "idle" | "loading" | "done" | "error";
 type CollectionPreview = {
   configured: boolean;
+  indexed: boolean;
   name: string;
   imageUrl: string | null;
   description: string | null;
@@ -15,6 +16,7 @@ type CollectionPreview = {
   openseaUrl: string | null;
   message?: string;
 };
+type CollectionPreviewPayload = Omit<CollectionPreview, "configured" | "indexed">;
 
 const placeholderLines = [
   "Enter any collection's CA",
@@ -114,10 +116,11 @@ export default function Blueshot() {
     setPreviewLoading(true);
     try {
       const response = await fetch(`/api/collection-metadata?chain=${encodeURIComponent(chain)}&contract=${encodeURIComponent(collection.trim())}`, { cache: "no-store" });
-      const data = await response.json().catch(() => ({})) as { preview?: CollectionPreview | null; configured?: boolean; message?: string; error?: string };
+      const data = await response.json().catch(() => ({})) as { preview?: CollectionPreviewPayload | null; configured?: boolean; message?: string; error?: string };
       if (!response.ok && response.status !== 502) throw new Error(data.error || "Enter a valid collection contract address.");
-      setPreview(data.preview ? { ...data.preview, configured: Boolean(data.configured) } : {
+      setPreview(data.preview ? { ...data.preview, configured: Boolean(data.configured), indexed: true } : {
         configured: Boolean(data.configured),
+        indexed: false,
         name: "Collection preview unavailable",
         imageUrl: null,
         description: null,
@@ -188,6 +191,6 @@ export default function Blueshot() {
         {holders.length > 0 && <><div className="table-wrap"><table className="data-table"><thead><tr><th>Holder address</th><th>NFT count</th><th>Status</th></tr></thead><tbody>{filtered.map(holder => <tr key={holder.address}><td className="mono">{holder.address}</td><td>{holder.items.toLocaleString()}</td><td><span className="pill-good">VERIFIED</span></td></tr>)}</tbody></table></div><div className="results-foot"><span className="hint"><Filter size={12} style={{ verticalAlign: "-2px", marginRight: 5 }} /> Showing {filtered.length.toLocaleString()} of {holders.length.toLocaleString()} holders</span><span className="hint"><ArrowDownToLine size={12} style={{ verticalAlign: "-2px", marginRight: 5 }} /> CSV sorted by balance</span></div></>}
       </section>
     </div>
-    {preview && <div className="collection-preview-backdrop" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) setPreview(null); }}><section className="collection-preview-card" role="dialog" aria-modal="true" aria-labelledby="collection-preview-title"><button className="collection-preview-close" type="button" aria-label="Close collection preview" onClick={() => setPreview(null)}><X size={17} /></button><div className="collection-preview-media">{preview.imageUrl ? <img src={preview.imageUrl} alt={`${preview.name} collection artwork`} fetchPriority="high" /> : <div className="collection-preview-placeholder"><span>{preview.name.slice(0, 1).toUpperCase()}</span><small>BLUESHOT PREVIEW</small></div>}<div className="collection-preview-media-shade" /></div><div className="collection-preview-body"><div className="eyebrow">COLLECTION PREVIEW</div><h2 id="collection-preview-title">{preview.name}</h2>{preview.description ? <p>{preview.description}</p> : <p>{preview.message || "Review the collection before Blueshot resolves its holders."}</p>}<div className="collection-preview-meta"><span className="mono">{chains[chain].short} / {collection.trim().slice(0, 6)}...{collection.trim().slice(-4)}</span>{preview.configured && <span className="pill-good">OPENSEA INDEXED</span>}</div><div className="collection-preview-actions"><button className="button secondary" type="button" onClick={() => setPreview(null)}>Cancel</button><button className="button primary" type="button" onClick={() => { setPreview(null); void runSnapshot(); }}>Proceed to snapshot <ArrowRight size={14} /></button></div>{!preview.configured && <small className="collection-preview-note">Add <span className="mono">OPENSEA_API_KEY</span> in Admin or Vercel to enable richer collection previews.</small>}{preview.openseaUrl && <a className="collection-preview-link" href={preview.openseaUrl} target="_blank" rel="noreferrer">View collection on OpenSea <ArrowRight size={13} /></a>}</div></section></div>}
+    {preview && <div className="collection-preview-backdrop" role="presentation" onMouseDown={event => { if (event.target === event.currentTarget) setPreview(null); }}><section className="collection-preview-card" role="dialog" aria-modal="true" aria-labelledby="collection-preview-title"><button className="collection-preview-close" type="button" aria-label="Close collection preview" onClick={() => setPreview(null)}><X size={17} /></button><div className="collection-preview-media">{preview.imageUrl ? <img src={preview.imageUrl} alt={`${preview.name} collection artwork`} fetchPriority="high" /> : <div className="collection-preview-placeholder"><span>{preview.name.slice(0, 1).toUpperCase()}</span><small>BLUESHOT PREVIEW</small></div>}<div className="collection-preview-media-shade" /></div><div className="collection-preview-body"><div className="eyebrow">COLLECTION PREVIEW</div><h2 id="collection-preview-title">{preview.name}</h2>{preview.description ? <p>{preview.description}</p> : <p>{preview.message || "Review the collection before Blueshot resolves its holders."}</p>}<div className="collection-preview-meta"><span className="mono">{chains[chain].short} / {collection.trim().slice(0, 6)}...{collection.trim().slice(-4)}</span>{preview.indexed && <span className="pill-good">OPENSEA INDEXED</span>}</div><div className="collection-preview-actions"><button className="button secondary" type="button" onClick={() => setPreview(null)}>Cancel</button><button className="button primary" type="button" onClick={() => { setPreview(null); void runSnapshot(); }}>Proceed to snapshot <ArrowRight size={14} /></button></div>{!preview.configured && <small className="collection-preview-note">Add <span className="mono">OPENSEA_API_KEY</span> in Admin or Vercel to enable richer collection previews.</small>}{preview.openseaUrl && <a className="collection-preview-link" href={preview.openseaUrl} target="_blank" rel="noreferrer">View collection on OpenSea <ArrowRight size={13} /></a>}</div></section></div>}
   </main>;
 }

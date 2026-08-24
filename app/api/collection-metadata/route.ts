@@ -5,11 +5,6 @@ import { getOpenSeaApiKey } from "@/lib/runtime-config";
 export const runtime = "nodejs";
 
 const OPENSEA_API = "https://api.opensea.io/api/v2";
-const openSeaChains: Partial<Record<ChainId, string>> = {
-  ethereum: "ethereum",
-  base: "base",
-  arbitrum: "arbitrum",
-};
 
 type OpenSeaRecord = Record<string, unknown>;
 type CollectionPreview = {
@@ -34,16 +29,12 @@ export async function GET(request: NextRequest) {
     return NextResponse.json({ configured: false, preview: null, message: "Add OPENSEA_API_KEY to load collection previews." }, { headers: { "cache-control": "no-store" } });
   }
 
-  const openSeaChain = openSeaChains[chain];
-  if (!openSeaChain) {
-    return NextResponse.json({ configured: true, preview: null, message: `${chains[chain].label} is not currently indexed by OpenSea.` }, { headers: { "cache-control": "no-store" } });
-  }
-
   try {
-    const contractData = await openSeaFetch(`/chain/${openSeaChain}/contract/${contract}`, key);
+    const openSeaChain = chains[chain].openSeaNetwork;
+    const contractData = await openSeaFetch(`/chain/${openSeaChain}/contract/${encodeURIComponent(contract)}`, key);
     const slug = extractSlug(contractData);
     const collectionData = slug ? await openSeaFetch(`/collections/${encodeURIComponent(slug)}`, key).catch(() => null) : null;
-    const preview = normalizePreview(collectionData ?? contractData, slug, chain, contract);
+    const preview = normalizePreview([collectionData, contractData], slug, chain, contract);
     return NextResponse.json({ configured: true, preview }, { headers: { "cache-control": "no-store" } });
   } catch {
     return NextResponse.json({ configured: true, preview: null, message: "OpenSea could not load this collection preview." }, { status: 502, headers: { "cache-control": "no-store" } });
@@ -68,13 +59,34 @@ function extractSlug(data: OpenSeaRecord) {
   return null;
 }
 
-function normalizePreview(data: OpenSeaRecord, slug: string | null, chain: ChainId, contract: string): CollectionPreview {
-  const nestedCollection = isRecord(data.collection) ? data.collection : null;
-  const name = firstString(data.name, data.collection_name, nestedCollection?.name, nestedCollection?.slug, slug) || `${chains[chain].label} collection`;
-  const image = firstString(data.image_url, data.image, data.logo_url, data.logo, data.banner_image_url, nestedCollection?.image_url, nestedCollection?.image);
-  const description = firstString(data.description, nestedCollection?.description);
-  const openseaUrl = firstString(data.opensea_url, nestedCollection?.opensea_url, slug ? `https://opensea.io/collection/${encodeURIComponent(slug)}` : null);
-  return { name, imageUrl: image ? highResolutionImage(image) : null, description, slug, openseaUrl: openseaUrl || `https://opensea.io/assets/${chains[chain].network}/${contract}` };
+function normalizePreview(records: Array<OpenSeaRecord | null>, slug: string | null, chain: ChainId, contract: string): CollectionPreview {
+  const nestedCollections = records.map(data => data && isRecord(data.collection) ? data.collection : null);
+  const name = firstString(
+    ...fieldValues(records, ["name", "collection_name"]),
+    ...fieldValues(nestedCollections, ["name", "slug"]),
+    slug,
+  ) || `${chains[chain].label} collection`;
+  const image = firstString(
+    ...fieldValues(records, ["image_url", "image", "logo_url", "logo", "banner_image_url"]),
+    ...fieldValues(nestedCollections, ["image_url", "image", "logo_url", "logo", "banner_image_url"]),
+  );
+  const description = firstString(...fieldValues(records, ["description"]), ...fieldValues(nestedCollections, ["description"]));
+  const openseaUrl = firstString(
+    ...fieldValues(records, ["opensea_url"]),
+    ...fieldValues(nestedCollections, ["opensea_url"]),
+    slug ? `https://opensea.io/collection/${encodeURIComponent(slug)}` : null,
+  );
+  return {
+    name,
+    imageUrl: image ? highResolutionImage(image) : null,
+    description,
+    slug,
+    openseaUrl: openseaUrl || `https://opensea.io/assets/${chains[chain].openSeaNetwork}/${contract}`,
+  };
+}
+
+function fieldValues(records: Array<OpenSeaRecord | null>, fields: string[]) {
+  return records.flatMap(record => fields.map(field => record?.[field]));
 }
 
 function highResolutionImage(value: string) {
