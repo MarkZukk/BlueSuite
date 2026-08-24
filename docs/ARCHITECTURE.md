@@ -38,7 +38,7 @@ The login route compares the submitted password using a timing-safe comparison. 
 - `app/api/snapshot/route.ts` runs on the Node.js runtime and is allowed up to 60 seconds for large snapshots.
 - `app/api/og/route.tsx` runs on the Edge runtime and produces social cards without exposing application secrets.
 - Public pages are rendered through the shared `SiteShell`, which owns theme persistence and responsive navigation.
-- `lib/chains.ts` is the single source of truth for supported chain labels and provider network names.
+- `lib/chains.ts` is the single source of truth for supported chain labels, provider network names, OpenSea identifiers, and explorer URLs.
 
 ## Current limitations
 
@@ -48,4 +48,4 @@ The login route compares the submitted password using a timing-safe comparison. 
 
 ## Collection previews
 
-Before a snapshot begins, Blueshot calls `GET /api/collection-metadata` to load an optional OpenSea collection name, description, slug, and high-resolution image. `OPENSEA_API_KEY` is read only on the Node.js server route. The metadata lookup uses OpenSea's chain identifiers (`ethereum`, `base`, `arbitrum`, and `robinhood`) rather than provider network names, so each supported chain resolves against its own OpenSea catalog. If the key is not configured or an individual collection is not indexed, the operator can still proceed with the snapshot using the existing provider strategy.
+Before a snapshot begins, Blueshot calls `GET /api/collection-metadata` to load an optional OpenSea collection name, description, slug, and high-resolution image. `OPENSEA_API_KEY` is read only on the Node.js server route. The metadata lookup uses OpenSea's chain identifiers (`ethereum`, `base`, `arbitrum`, `ink`, and `robinhood`) rather than provider network names, so each supported chain resolves against its own OpenSea catalog. If the key is not configured or an individual collection is not indexed, the operator can still proceed with the snapshot using the existing provider strategy.

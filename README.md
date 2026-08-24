@@ -8,10 +8,11 @@ The project is intentionally small in scope: each product should make a real blo
 
 ### Blueshot
 
-Blueshot snapshots NFT ownership for a collection and exports a holder CSV. It supports Ethereum, Base, Arbitrum, and Robinhood Chain.
+Blueshot snapshots NFT ownership for a collection and exports a holder CSV. It supports Ethereum, Base, Arbitrum, Ink, and Robinhood Chain.
 
 - Uses the Alchemy indexed NFT API when `ALCHEMY_API_KEY` is configured.
 - Uses a parallel Robinhood Chain RPC/Multicall3 path when Alchemy is unavailable there.
+- Routes Ink requests through the `ink-mainnet` provider network and OpenSea's `ink` chain identifier.
 - Falls back to Robinhood Blockscout holder pagination when token IDs are not sequential.
 - Supports a read-only “check if an address is holding a collection” query.
 - Sorts holder exports from the largest balance to the smallest balance.
@@ -44,7 +45,7 @@ Requirements:
 
 - Node.js 20 or newer
 - npm
-- An Alchemy API key for Ethereum, Base, and Arbitrum snapshots
+- An Alchemy API key for Ethereum, Base, Arbitrum, and Ink snapshots
 
 Install dependencies and start the development server:
 

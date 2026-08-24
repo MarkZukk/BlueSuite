@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowRight, ArrowUpRight, Check, Database, Gauge, LockKeyhole, Zap } from "lucide-react";
 
-const chains = ["Ethereum", "Robinhood", "Base", "Arbitrum"];
+const chains = ["Ethereum", "Robinhood", "Base", "Arbitrum", "Ink"];
 export default function Home() {
   return <main className="page">
     <section className="hero"><div className="hero-grid"><div className="hero-copy"><div className="eyebrow">BLUEVALLEY LABS / BLUESUITE 01</div><h1>Tools for the blockchain.<br/><span style={{color:"var(--blue-2)"}}>Built for operators.</span></h1><p>Bluesuite is a collection of purpose-built tools from BLUEVALLEY LABS for managing, analyzing, and operating on-chain workflows.</p><div className="hero-actions"><Link className="button primary" href="#suite">Explore Bluesuite <ArrowRight size={15}/></Link><Link className="button secondary" href="#about">Meet BlueValley Labs <ArrowUpRight size={15}/></Link></div><div className="hero-note"><span className="status-dot"/> Systems designed around how blockchain work actually gets done.</div></div><div className="hero-stage" aria-label="Bluesuite product cards"><Link className="hero-product-card hero-product-card-back" href="/bluehelper"><img src="/bluehelper-card.svg" alt="BlueHelper batch operations card" /></Link><Link className="hero-product-card hero-product-card-mid" href="/foundersbot"><img src="/foundersbot-card.svg" alt="FoundersBot private operating system card" /></Link><Link className="hero-product-card hero-product-card-front" href="/blueshot"><img src="/blueshot-card.svg" alt="Blueshot NFT snapshot card" /></Link><div className="hero-stage-label"><span className="status-dot"/> THREE PRODUCTS / ONE OPERATING SURFACE</div></div></div></section>
